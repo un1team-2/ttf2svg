@@ -1,1 +1,2 @@
 fonttools==4.28.3
+beautifulsoup==4.10

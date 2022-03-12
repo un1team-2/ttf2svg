@@ -17,7 +17,7 @@ from fontTools import ttLib
 from fontTools.pens.basePen import BasePen
 from fontTools.pens.transformPen import TransformPen
 
-from ttf2svg.utils import (
+from .utils import (
     create_folder,
     create_nested_folder,
     final_message,
