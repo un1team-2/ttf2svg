@@ -1,7 +1,7 @@
 ## Зависимости
 
 * fonttools (version 4.28.3) ```pip install fonttools==4.28.3```
-* beautifulSoup (version 4.10) ```pip install beautifulsoup==4.10```
+* beautifulSoup4 (version 4.10) ```pip install beautifulsoup4==4.10```
 
 ## Пример
 

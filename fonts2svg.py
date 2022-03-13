@@ -247,19 +247,12 @@ def processFontsInMemory(font_paths_list, hex_colors_list, outputFolderPath, opt
     if options.gnames_to_exclude:
         glyphNamesToSkipList.extend(options.gnames_to_exclude)
 
-    # Determine which glyph names need to be saved in a nested folder
-    glyphNamesToSaveInNestedFolder = get_gnames_to_save_in_nested_folder(
-        glyphNamesList)
-
-    nestedFolderPath = None
-    filesSaved = 0
-
     viewbox = viewbox_settings(
         font_paths_list[0],
         options.adjust_view_box_to_glyph
     )
 
-    svgStrings = []
+    svgStrings = {}
 
     # Generate the SVGs
     for gName in glyphNamesList:
@@ -297,17 +290,9 @@ def processFontsInMemory(font_paths_list, hex_colors_list, outputFolderPath, opt
         if '<path' not in svgStr:
             continue
 
-        # Create the output folder.
-        # This may be necessary if the folder was not provided.
-        # The folder is made this late in the process because
-        # only now it's clear that's needed.
+        svgStrings[gName] = svgStr
 
-        svgStrings.append(svgStr)
-        # svgFilePath = os.path.join(folderPath, gName + '.svg')
-        # write_file(svgFilePath, svgStr)
-        filesSaved += 1
-
-    font.close()
+    # font.close()
     return svgStrings
 
 
@@ -414,7 +399,7 @@ def get_options(args):
 
 
 
-def mainInMemory(args: list = None) -> list:
+def mainInMemory(args: list = None) -> dict:
     """
     Converting ttf, otf, woff or woff2 to list of svg
 
