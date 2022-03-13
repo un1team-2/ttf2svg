@@ -13,6 +13,6 @@
 import ttf2svg
 
 glyphs = ttf2svg.get_glyphs('BebasNeue-Regular.ttf')
-print("\n".join(glyphs))
+print(print("\n".join([str(glyph) for glyph in glyphs.items()])))
 ```
 __По идее, вы можете открывать шрифты любого типа__

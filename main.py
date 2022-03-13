@@ -6,5 +6,6 @@ def convert_font_to_svg(font: str, glyphs: str = 'abcdefghijklmnopqrstuvwxyzABCD
     return fonts2svg.mainInMemory(['-c', '000000', '-g', ','.join(glyphs), font])
 
 
-def get_glyphs(font: str) -> list:
-    return scrap.get_svg_paths("\n".join(convert_font_to_svg(font)))
+def get_glyphs(font: str) -> dict:
+    svgs = convert_font_to_svg(font)
+    return scrap.get_svg_paths(svgs)
